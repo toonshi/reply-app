@@ -32,6 +32,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.ui.ReplyApp
 import com.example.reply.ui.theme.ReplyTheme
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 
 class MainActivity : ComponentActivity() {
 
@@ -50,7 +51,10 @@ class MainActivity : ComponentActivity() {
                                 .calculateEndPadding(layoutDirection)
                         )
                 ) {
-                    ReplyApp()
+                    val windowSize = calculateWindowSizeClass(this)
+                    ReplyApp(
+                        windowSize = windowSize.widthSizeClass
+                    )
                 }
             }
         }
@@ -62,7 +66,10 @@ class MainActivity : ComponentActivity() {
 fun ReplyAppCompactPreview() {
     ReplyTheme {
         Surface {
-            ReplyApp()
+            ReplyApp(
+                windowSize = WindowWidthSizaClass.Compact,
+            )
+
         }
     }
 }
